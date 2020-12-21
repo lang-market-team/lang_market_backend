@@ -1,0 +1,6 @@
+app:
+    datasource:
+        jdbc-url: jdbc:postgresql://3.83.100.156/lang_market
+        username: postgres
+        password: 666666
+        pool-size: 30
