@@ -30,4 +30,12 @@ public class ProductRepository {
                 new Object[]{id_product},
                 new BeanPropertyRowMapper<>(Product.class));
     }
+
+    public List<Product> getProductByType(Integer product_type) {
+        final String sql = "SELECT * from product_langmarket where product_type = ?";
+        return  jdbcTemplate.query(
+                sql,
+                new Object[]{product_type},
+                new BeanPropertyRowMapper<>(Product.class));
+    }
 }
