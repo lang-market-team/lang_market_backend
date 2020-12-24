@@ -1,8 +1,11 @@
 package lang_market.backend.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 public class UserRepository {
@@ -13,18 +16,23 @@ public class UserRepository {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    Integer getMaxID() {
+    public Integer howManyUser() {
         final String sql = "SELECT COUNT(id_user) FROM user_langmarket";
-        return jdbcTemplate.queryForObject(sql, Integer.class);
+        return jdbcTemplate.queryForObject(
+                sql,
+                Integer.class);
     }
 
-    Integer signup(Integer id_user, String username, String pass, String first_name, String last_name, String street, String town, String district, String province, String phonenumber, String email) {
-        final String sql = "INSERT INTO user_langmarket (id_user, username, pass, first_name, last_name, street, town, district, province, phonenumber, email) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        return  jdbcTemplate.update(sql, id_user, username, pass, first_name, last_name, street, town, district, province, phonenumber, email);
+    public Integer signup(String username, String pass, String first_name, String last_name, String street, String town, String district, String province, String phonenumber, String email, Integer type_account, String shop_name, String shop_describe) {
+        final String sql = "INSERT INTO user_langmarket (username, pass, first_name, last_name, street, town, district, province, phonenumber, email, type_account, shop_name, shop_describe) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        return  jdbcTemplate.update(sql, username, pass, first_name, last_name, street, town, district, province, phonenumber, email, type_account, shop_name, shop_describe);
     }
 
-    Integer login(String username, String pass) {
-        final String sql = "SELECT COUNT(id_user) FROM user_langmarket WHERE username = ? AND pass = ?";
-        return  jdbcTemplate.queryForObject(sql,new Object[]{username, pass}, Integer.class);
+    public User login(String username, String pass) {
+        final String sql = "SELECT id_user, first_name, last_name, type_account FROM user_langmarket WHERE username = ? AND pass = ?";
+        return  jdbcTemplate.queryForObject(
+                sql,
+                new Object[]{username, pass},
+                new BeanPropertyRowMapper<>(User.class));
     }
 }
