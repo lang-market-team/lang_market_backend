@@ -12,13 +12,12 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    Integer getMaxID() {
-        return userRepository.getMaxID();
+    public Integer howManyUser() {
+        return userRepository.howManyUser();
     }
 
-    Integer signup(User user) {
+    public Integer signup(User user) {
         return userRepository.signup(
-                getMaxID(),
                 user.getUsername(),
                 user.getPass(),
                 user.getFirst_name(),
@@ -28,11 +27,14 @@ public class UserService {
                 user.getDistrict(),
                 user.getProvince(),
                 user.getPhonenumber(),
-                user.getEmail()
+                user.getEmail(),
+                user.getType_account(),
+                user.getShop_name(),
+                user.getShop_describe()
         );
     }
 
-    Integer login(User user) {
+    public User login(User user) {
         return userRepository.login(user.getUsername(), user.getPass());
     }
 }
