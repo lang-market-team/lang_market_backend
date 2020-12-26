@@ -9,6 +9,7 @@ public class Order {
     String delivery_address;
     Long create_time;
     Integer id_buyer;
+    Integer id_seller;
 
     public Integer getId_order() {
         return id_order;
@@ -72,6 +73,14 @@ public class Order {
 
     public void setId_buyer(Integer id_buyer) {
         this.id_buyer = id_buyer;
+    }
+
+    public Integer getId_seller() {
+        return id_seller;
+    }
+
+    public void setId_seller(Integer id_seller) {
+        this.id_seller = id_seller;
     }
 
     public Order() {

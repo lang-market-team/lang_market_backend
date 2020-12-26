@@ -1,11 +1,20 @@
 package lang_market.backend.order;
 
 public class OrderDetail {
+    Integer id_order;
     Integer id_product;
     String product_image;
     String product_name;
     Integer price;
     Integer amount;
+
+    public Integer getId_order() {
+        return id_order;
+    }
+
+    public void setId_order(Integer id_order) {
+        this.id_order = id_order;
+    }
 
     public Integer getId_product() {
         return id_product;
