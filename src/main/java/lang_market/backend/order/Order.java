@@ -4,6 +4,7 @@ public class Order {
     Integer id_order;
     Integer total_price;
     Integer status_order;
+    Boolean paid_order;
     Long delivery_time;
     String delivery_address;
     Long create_time;
@@ -31,6 +32,14 @@ public class Order {
 
     public void setStatus_order(Integer status_order) {
         this.status_order = status_order;
+    }
+
+    public Boolean getPaid_order() {
+        return paid_order;
+    }
+
+    public void setPaid_order(Boolean paid_order) {
+        this.paid_order = paid_order;
     }
 
     public Long getDelivery_time() {
