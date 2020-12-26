@@ -15,6 +15,14 @@ public class ProductService {
         this.productRepository = productRepository;
     }
 
+    Integer createNewProduct(Product product) {
+        return  productRepository.createNewProduct(product.getPrice(), product.getProduct_name(), product.getProduct_describe(), product.getProduct_type(), product.getRemain_amount(), product.getProduct_image(), product.getId_seller());
+    }
+
+    public Product updateProduct(Product product) {
+        return productRepository.updateProduct(product.getId_product(), product.getPrice(), product.getProduct_name(), product.getProduct_describe(), product.getProduct_type(), product.getRemain_amount(), product.product_image);
+    }
+
     public List<Product> getAllProduct() {
         return productRepository.getAllProduct();
     }
