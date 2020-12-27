@@ -5,6 +5,8 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public class UserRepository {
     private final JdbcTemplate jdbcTemplate;
@@ -12,13 +14,6 @@ public class UserRepository {
     @Autowired
     public UserRepository(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
-    }
-
-    public Integer howManyUser() {
-        final String sql = "SELECT COUNT(id_user) FROM user_langmarket";
-        return jdbcTemplate.queryForObject(
-                sql,
-                Integer.class);
     }
 
     public Integer signup(String username, String pass, String first_name, String last_name, String street, String town, String district, String province, String phonenumber, String email, Integer type_account, String shop_name, String shop_describe) {
@@ -59,6 +54,14 @@ public class UserRepository {
         return  jdbcTemplate.queryForObject(
                 sql2,
                 new Object[]{id_user},
+                new BeanPropertyRowMapper<>(User.class));
+    }
+
+    public List<User> getUserByType(Integer type_account) {
+        final String sql = "SELECT * FROM user_langmarket WHERE type_account = ?";
+        return  jdbcTemplate.query(
+                sql,
+                new Object[]{type_account},
                 new BeanPropertyRowMapper<>(User.class));
     }
 }

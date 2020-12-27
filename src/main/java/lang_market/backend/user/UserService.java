@@ -3,6 +3,8 @@ package lang_market.backend.user;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserService {
     private final  UserRepository userRepository;
@@ -10,10 +12,6 @@ public class UserService {
     @Autowired
     public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
-    }
-
-    public Integer howManyUser() {
-        return userRepository.howManyUser();
     }
 
     public Integer signup(User user) {
@@ -48,5 +46,9 @@ public class UserService {
 
     public User unblockUser(Integer id_user) {
         return userRepository.unblockUser(id_user);
+    }
+
+    public List<User> getUserByType(Integer type_account) {
+        return userRepository.getUserByType(type_account);
     }
 }

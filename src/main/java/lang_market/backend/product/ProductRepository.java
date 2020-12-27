@@ -53,4 +53,12 @@ public class ProductRepository {
                 new Object[]{product_type},
                 new BeanPropertyRowMapper<>(Product.class));
     }
+
+    public List<Product> getProductByIdSeller(Integer id_seller) {
+        final String sql = "SELECT * from product_langmarket where id_seller = ?";
+        return  jdbcTemplate.query(
+                sql,
+                new Object[]{id_seller},
+                new BeanPropertyRowMapper<>(Product.class));
+    }
 }

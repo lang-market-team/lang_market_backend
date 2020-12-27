@@ -34,4 +34,8 @@ public class ProductService {
     public List<Product> getProductByType(Integer product_type) {
         return  productRepository.getProductByType(product_type);
     }
+
+    public List<Product> getProductByIdSeller(Integer id_seller) {
+        return  productRepository.getProductByIdSeller(id_seller);
+    }
 }
