@@ -44,4 +44,10 @@ public class ProductController {
     public List<Product> getProductByType(@PathVariable("product_type")Integer product_type) {
         return  productService.getProductByType(product_type);
     }
+
+    @RequestMapping(path = "id_seller/{id_seller}")
+    @GetMapping
+    public List<Product> getProductByIdSeller(@PathVariable("id_seller")Integer id_seller) {
+        return  productService.getProductByIdSeller(id_seller);
+    }
 }

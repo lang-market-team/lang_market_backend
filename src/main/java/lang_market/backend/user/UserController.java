@@ -3,6 +3,8 @@ package lang_market.backend.user;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @CrossOrigin
 @RestController
 @RequestMapping("api")
@@ -42,5 +44,11 @@ public class UserController {
     @GetMapping
     public User unblockUser(@PathVariable("id_user") Integer id_user) {
         return userService.unblockUser(id_user);
+    }
+
+    @RequestMapping(path = "user/get_user_by_type/type_account={type_account}")
+    @GetMapping
+    public List<User> getUserByType(@PathVariable("type_account") Integer type_account) {
+        return userService.getUserByType(type_account);
     }
 }
