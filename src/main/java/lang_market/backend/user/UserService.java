@@ -37,4 +37,16 @@ public class UserService {
     public User login(User user) {
         return userRepository.login(user.getUsername(), user.getPass());
     }
+
+    public User getInformationOfUserById(Integer id_user) {
+        return userRepository.getInformationOfUserById(id_user);
+    }
+
+    public User blockUser(Integer id_user) {
+        return userRepository.blockUser(id_user);
+    }
+
+    public User unblockUser(Integer id_user) {
+        return userRepository.unblockUser(id_user);
+    }
 }

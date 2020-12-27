@@ -13,10 +13,9 @@ public class User {
     String phonenumber;
     String email;
     Integer type_account;
-    Boolean status_seller;
+    Boolean status_user;
     String shop_name;
     String shop_describe;
-    Boolean status_buyer;
 
     public Integer getId_user() {
         return id_user;
@@ -114,12 +113,12 @@ public class User {
         this.type_account = type_account;
     }
 
-    public Boolean getStatus_seller() {
-        return status_seller;
+    public Boolean getStatus_user() {
+        return status_user;
     }
 
-    public void setStatus_seller(Boolean status_seller) {
-        this.status_seller = status_seller;
+    public void setStatus_user(Boolean status_user) {
+        this.status_user = status_user;
     }
 
     public String getShop_name() {
@@ -136,14 +135,6 @@ public class User {
 
     public void setShop_describe(String shop_describe) {
         this.shop_describe = shop_describe;
-    }
-
-    public Boolean getStatus_buyer() {
-        return status_buyer;
-    }
-
-    public void setStatus_buyer(Boolean status_buyer) {
-        this.status_buyer = status_buyer;
     }
 
     public User() {

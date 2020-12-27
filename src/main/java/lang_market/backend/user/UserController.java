@@ -25,4 +25,22 @@ public class UserController {
     public User login(@RequestBody User user) {
         return userService.login(user);
     }
+
+    @RequestMapping(path = "user/get_information/id_user={id_user}")
+    @GetMapping
+    public User getInformationOfUserById(@PathVariable("id_user") Integer id_user) {
+        return userService.getInformationOfUserById(id_user);
+    }
+
+    @RequestMapping(path = "user/block/id_user={id_user}")
+    @GetMapping
+    public User blockUser(@PathVariable("id_user") Integer id_user) {
+        return userService.blockUser(id_user);
+    }
+
+    @RequestMapping(path = "user/unblock/id_user={id_user}")
+    @GetMapping
+    public User unblockUser(@PathVariable("id_user") Integer id_user) {
+        return userService.unblockUser(id_user);
+    }
 }

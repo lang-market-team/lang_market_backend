@@ -15,7 +15,7 @@ public class ShopRepository {
     }
 
     public Shop getShopByIdUser(Integer id_user) {
-        final String sql = "SELECT column_name(s) FROM table1 INNER JOIN table2 ON table1.column_name = table2.column_name;";
+        final String sql = "SELECT shop_name, shop_describe FROM user_langmarket WHERE id_user = ?";
         return  jdbcTemplate.queryForObject(
                 sql,
                 new Object[]{id_user},

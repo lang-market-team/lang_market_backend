@@ -27,10 +27,38 @@ public class UserRepository {
     }
 
     public User login(String username, String pass) {
-        final String sql = "SELECT id_user, first_name, last_name, type_account FROM user_langmarket WHERE username = ? AND pass = ?";
+        final String sql = "SELECT * FROM user_langmarket WHERE username = ? AND pass = ?";
         return  jdbcTemplate.queryForObject(
                 sql,
                 new Object[]{username, pass},
+                new BeanPropertyRowMapper<>(User.class));
+    }
+
+    public User getInformationOfUserById(Integer id_user) {
+        final String sql = "SELECT * FROM user_langmarket WHERE id_user = ?";
+        return  jdbcTemplate.queryForObject(
+                sql,
+                new Object[]{id_user},
+                new BeanPropertyRowMapper<>(User.class));
+    }
+
+    public User blockUser(Integer id_user) {
+        final String sql1 = "UPDATE user_langmarket SET status_user = false WHERE id_user = ?";
+        final String sql2 = "SELECT * FROM user_langmarket WHERE id_user = ?";
+        jdbcTemplate.update(sql1, id_user);
+        return  jdbcTemplate.queryForObject(
+                sql2,
+                new Object[]{id_user},
+                new BeanPropertyRowMapper<>(User.class));
+    }
+
+    public User unblockUser(Integer id_user) {
+        final String sql1 = "UPDATE user_langmarket SET status_user = true WHERE id_user = ?";
+        final String sql2 = "SELECT * FROM user_langmarket WHERE id_user = ?";
+        jdbcTemplate.update(sql1, id_user);
+        return  jdbcTemplate.queryForObject(
+                sql2,
+                new Object[]{id_user},
                 new BeanPropertyRowMapper<>(User.class));
     }
 }
